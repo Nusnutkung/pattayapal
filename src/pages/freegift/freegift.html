@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Free Gift</ion-title>
+    </ion-navbar>
+    <ion-row class="toolbar toolbar-background-md border-top-black">
+      <ion-col col-4 class=" text-cen font-width font-white  {{yesterday}}" id="yesterday" (click)='share("yesterday")'  >เมื่อวาน</ion-col>
+      <ion-col col-4 class=" text-cen font-width font-white  {{today}}" id="today" (click)='share("today")'>วันนี้</ion-col>
+      <ion-col col-4 class=" text-cen font-width font-white {{tomorrow}}" id="tomorrow" (click)='share("tomorrow")'>พรุ่งนี้</ion-col>
+    </ion-row>
+  </ion-header>
+
+<ion-content >
+  <ion-row>
+    <ion-col>
+        <img class='imgHomeNews' src="http://www.pattayapal.com/api/images/{{image}}" style="width:100%;height:100%;"> 
+      <!-- <img class='imgHomeNews' [src]="(a.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+a.meta_value : 'assets/home/slider/1.jpg'" style="width:100%;height:100%;"> -->
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col padding>
+      <h4 class="font-width" >{{title}}</h4>
+
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col padding>
+        <h5 class="font-width">รายละเอียด</h5>
+        <p [innerHTML]="detail"></p>
+
+    </ion-col>    
+  </ion-row>
+
+  <ion-row>
+    <ion-col padding>
+        <h5 class="font-width">เงื่อนไข</h5>
+        <p [innerHTML]="condition"></p>
+
+    </ion-col>        
+  </ion-row>
+</ion-content>
+
+<ion-footer class="{{show}}">
+    <ion-toolbar>
+      <ion-row>
+        <ion-col col-6 class="text-cen font-width font-size font-white" (click)='share()'>Share</ion-col>
+        <ion-col col-6 class="text-cen font-width font-size font-white" (click)='getLucky()'>ลุ้นรับสิทธิ์</ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-footer>

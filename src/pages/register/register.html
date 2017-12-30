@@ -1,0 +1,55 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>สมัครสมาชิก</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list >
+        
+          <ion-item>
+            <ion-label floating>เบอร์โทรศัพท์ (Optional)</ion-label>
+            <ion-input type="number" [(ngModel)]='phone' ></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label floating>อีเมล์</ion-label>
+            <ion-input type="email"  [(ngModel)]='email'></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>รหัสผ่าน</ion-label>
+              <ion-input type="password" [(ngModel)]='pass'></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>ยืนยันรหัสผ่าน</ion-label>
+              <ion-input type="password" [(ngModel)]='confirmpass'></ion-input>
+          </ion-item>
+          <!-- <ion-item>
+              <ion-label floating>เพศ</ion-label>
+              <ion-input type="password" [(ngModel)]='confirmpass'></ion-input>
+          </ion-item>               -->
+    </ion-list>
+
+
+    <ion-row>
+        <ion-col>
+            ข้อมูลส่วนตัวของท่าน จะถูกปกปิดเป็นความลับ และใช้เพื่อยืนยันตัวตนในการรับสิทธิประโยชน์เฉพาะสำหรับคุณ เท่านั้น
+        </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col style="text-align:center">
+          <button ion-button style="width:80%;font-size: 14pt;" (click)='register()'>ดำเนินการต่อ</button>
+      </ion-col>
+    </ion-row>
+
+
+
+</ion-content>

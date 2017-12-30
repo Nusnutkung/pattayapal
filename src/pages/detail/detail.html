@@ -1,0 +1,27 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ข่าว</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content >
+    
+      <div sticky style="position: sticky;top: 0;display: block;z-index: -1;background:#eee"  >
+          <img class='imgHomeNews' [src]="(Data.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+Data.meta_value : 'assets/home/slider/1.jpg'" style="width:100%;height:auto;">      
+
+    
+      <div style="padding:3px 5px 5px 10px;">
+        <p style="margin:0px;font-weight:600">{{Data.post_title}}</p>
+        
+
+      </div>
+    </div>
+
+      <div style="padding: 0px 10px 0px 10px ;line-height:20pt;background:white;color:#545454;transition: .5s" [innerHTML]="Data.post_content" ></div>
+    </ion-content>
+    

@@ -1,0 +1,86 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+$backcolor : #eb232a;
+$bordercolor : #dedede;
+
+.title , .title-md{
+    text-align: center;
+}
+.fontsize20{
+    font-size: 20px;
+}
+.borderbottom{
+    border-bottom: 1px solid $bordercolor;
+}
+.card-md{
+    margin: 0px;
+    width:100%;
+    box-shadow: none;
+    border-bottom: 1px solid $bordercolor;
+}
+.pictureNews{
+
+}
+.divpictureNews{
+    // max-height: 200px;
+    max-width: 100%;
+    max-height: 200px;
+}
+.card-content-md, .card-content-ios{
+    padding: 12px;
+    display: block;
+    position: absolute;
+}
+.card-title-md, .card-title-ios{
+    font-size: 1.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+img.alignnone.size-medium, img.aligncenter.size-full, img.aligncenter, img.alignleft, img.alignnone, img.size-full{
+    width:100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    position: absolute;
+    z-index: 99999
+}
+.toolbar-background-md{ background: $backcolor; }
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default, .toolbar-title-md{
+    color:white;
+}
+.text-cen{ text-align: center; }
+.font-width{ font-weight: 600; }
+.font-size{ font-size: 20px; }
+.font-white{ color: white; }
+.border-top{ border-top: 1px solid white; }
+.border-left{ border-left: 1px solid white; }
+.border-right{ border-right: 1px solid white; }
+.border-top-black{ border-top: 1px solid black; }
+.border-left-black{ border-left: 1px solid black; }
+.border-right-black{ border-right: 1px solid black; }
+.button-md, .button-ios{ background: $backcolor; }
+.toolbar-background{ background: $backcolor; }
+.toolbar-title-ios , .bar-buttons-ios{ color: white;opacity: 1; }
+.bar-button-default-ios.activated{ opacity: 1; }
+button.back-button.disable-hover.bar-button.bar-button-ios.back-button-ios.bar-button-default.bar-button-default-ios.show-back-button{ color: white; }
+.title, .title-ios{ color: white;}
+.card-ios{ margin: 0px ;width:100%;}

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>การตั้งค่า</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content >
+
+    <ion-list>
+
+        <ion-item>
+            <ion-toggle checked="false"></ion-toggle>
+            <ion-label>
+              ตั้งค่าภาษา
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-toggle checked="false"></ion-toggle>
+            <ion-label>
+              ตั้งค่าพื้นหลัง
+            </ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-toggle checked="false"></ion-toggle>
+            <ion-label>
+                Notification
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
+
+
+    <ion-list-header style="background: #dcdcdc;font-size: 20px;color:black;font-weight: 600;">
+        ช่วยเหลือ
+      </ion-list-header>
+    <ion-list>
+        <button ion-item (click)="itemSelected(item)">แนะนำการใช้งาน</button>  
+        <button ion-item (click)="itemSelected(item)">เกี่ยวกับ</button>  
+        <button ion-item (click)="itemSelected(item)">ให้คะแนนแอพนี้</button>  
+    </ion-list>
+
+
+
+    <div *ngIf="email">
+        <ion-list-header style="background: #dcdcdc;font-size: 20px;color:black;font-weight: 600;">
+                Email
+            </ion-list-header>
+            <ion-list>
+                    <button ion-item (click)="logout()">ออกจากระบบ</button>  
+        </ion-list>
+    </div>
+</ion-content>

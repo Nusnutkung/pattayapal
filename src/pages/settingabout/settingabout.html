@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>settingabout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+        <div style="text-align:center">
+            <img src="../../assets/slider/icon.png"   style="width:70%;" >
+        </div>
+        <ion-list >
+            
+              <ion-item>
+                <ion-label floating>อีเมล์</ion-label>
+                <ion-input type="email" [(ngModel)]='email' ></ion-input>
+              </ion-item>
+            
+              <ion-item>
+                <ion-label floating>เบอร์โทรศัพท์</ion-label>
+                <ion-input type="number" [(ngModel)]='phone'></ion-input>
+              </ion-item>
+            
+        </ion-list>
+      
+          <div style="text-align:center">
+            <button ion-button style="width:40%;font-size: 14pt;" (click)='save()'>ตกลง</button>
+          </div>
+
+    
+  
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-content class="tutorial-page">
+  <div style="text-align:center">
+      <img src="http://www.pattayapal.com/api/images/introduction/1.jpg"   style="width:70%;" >
+  </div>
+  <ion-list >
+      
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]='email' ></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]='pass'></ion-input>
+        </ion-item>
+      
+  </ion-list>
+
+    <div style="text-align:center">
+      <button ion-button style="width:40%;font-size: 14pt;" (click)='register()'>สมัครสมาชิก</button>
+      <button ion-button style="width:40%;font-size: 14pt;" (click)='login()'>เข้าสู่ระบบ</button>
+    </div>
+    <div style="text-align:center;margin-top: 20px;">
+       <span (click)="gotoHomePage()">ข้ามขั้นตอนนี้</span> 
+    </div>
+
+</ion-content>

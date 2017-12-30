@@ -1,0 +1,47 @@
+<!--
+  Generated template for the SettingpromotionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>settingpromotion</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<h3 class="text-cen">Promotion วันพรุ่งนี้</h3>
+    <ion-list >
+        <ion-item>
+          <img [src]="ImageUrl" *ngIf='hideImage' style="width:100%;height:auto;">
+          <img src="http://www.pattayapal.com/api/images/introduction/1.jpg" *ngIf="showImage" (click)='actionSheet()' style="width:100%;height:auto;">
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary"  style="font-size:20px" stacked>ชื่อ</ion-label>
+          <ion-input type="text" [(ngModel)]='title' ></ion-input>
+        </ion-item>
+      
+        <ion-item>
+            <ion-label color="primary" style="font-size:20px" stacked>รายละเอียด</ion-label>
+          <ion-textarea   rows="8" cols="10" [(ngModel)]='detail'></ion-textarea>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" style="font-size:20px" stacked>เงื่อนไข</ion-label>
+            <ion-textarea   rows="8" cols="10"  [(ngModel)]='condition'></ion-textarea>
+        </ion-item>   
+          
+        <!-- <img [src]="_external.loadImage(profile.shop_image_1)" > -->
+  </ion-list>
+
+
+    <button ion-button style="width:40%;font-size: 14pt;" (click)='savePromotion()'>Upload</button>
+
+
+
+</ion-content>

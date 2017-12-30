@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pattayapal</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <div style="text-align:center">
+        <img src="../../assets/slider/icon.png"  style="width:70%;" >
+    </div> 
+    
+    <ion-list>
+        <ion-list-header style="background: #dcdcdc;font-size: 20px;">
+          ติดต่อ
+        </ion-list-header>
+    
+        <ion-item style="border-bottom: 1px solid #dedede;">
+          <ion-avatar item-start>
+              <ion-icon name="mail"></ion-icon>
+          </ion-avatar>
+          <h2>อีเมล์</h2>
+          <p>{{ email }}</p>
+        </ion-item>
+    
+        <ion-item style="border-bottom: 1px solid #dedede;">
+          <ion-avatar item-start>
+              <ion-icon name="phone-portrait"></ion-icon>
+          </ion-avatar>
+          <h2>เบอร์โทรศัพท์</h2>
+          <p>{{ phone }}</p>
+        </ion-item>
+  
+      </ion-list>
+
+
+</ion-content>
