@@ -11,6 +11,8 @@ import { SettingPage } from '../pages/setting/setting';
 import { FreegiftPage } from '../pages/freegift/freegift';
 import { Storage } from '@ionic/storage';
 import { SettingaboutPage } from '../pages/settingabout/settingabout';
+import { YoutubePage } from '../pages/youtube/youtube';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,22 +37,21 @@ export class MyApp {
     this.pages = [
       { title: 'Favorites', component: HomePage },
       { title: 'News', component: ListPage },
-      { title: 'Free Gift', component: FreegiftPage },
+      { title: 'Youtube', component: YoutubePage },
+      { title: 'Promotion', component: FreegiftPage },
       { title: 'เกี่ยวกับ', component: AboutusPage },
       { title: 'การตั้งค่า', component: SettingPage }
+
 
     ];
 
 
-      storage.get('Email').then((val) => {
-        console.log('Email ' + val)
-        
+      storage.get('Email').then((val) => {      
         if(val != null){
           this.email = val ;
           this.nav.setRoot(ListPage);
 
       storage.get('status').then((val)=>{
-        console.log('va ' + val)
         if(val == 'admin'){
             this.status = val;
         }
@@ -70,15 +71,12 @@ export class MyApp {
     });
   }
 
-  openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
-    // this.nav.push(page.component);
-  }
+  openPage(page) { this.nav.setRoot(page.component); }
   gotoIntro(){ this.nav.setRoot(IntroPage); }
   gotoSettingpromotionPage(){ this.nav.push(SettingpromotionPage); }
   gotoSettingabout(){ this.nav.push(SettingaboutPage);  }
+  gotoProfile(){ this.nav.push(ProfilePage);  }
+  
 
   showAlert() {
     let alert = this.alertCtrl.create({

@@ -14,7 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { GetdataProvider } from '../providers/getdata/getdata';
 import { HttpModule } from '@angular/http';
 import { DetailPage } from '../pages/detail/detail';
+import { YoutubePage } from '../pages/youtube/youtube';
 import { SettingPage } from '../pages/setting/setting';
+import { ProfilePage } from '../pages/profile/profile';
 import { FreegiftPage } from '../pages/freegift/freegift';
 import { RegisterPage } from '../pages/register/register';
 import { IonicStorageModule } from '@ionic/storage';
@@ -23,6 +25,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +41,9 @@ import { FilePath } from '@ionic-native/file-path';
     RegisterPage,
     SettingpromotionPage,
     UploadModalPage,
-    SettingaboutPage
+    SettingaboutPage,
+    YoutubePage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,9 @@ import { FilePath } from '@ionic-native/file-path';
     RegisterPage,
     SettingpromotionPage,
     UploadModalPage,
-    SettingaboutPage
+    SettingaboutPage,
+    YoutubePage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
@@ -68,7 +76,8 @@ import { FilePath } from '@ionic-native/file-path';
     Camera,
     Transfer,
     FilePath,
-    File
+    File,
+    YoutubeVideoPlayer
     
   ]
 })

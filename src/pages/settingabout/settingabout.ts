@@ -18,7 +18,6 @@ export class SettingaboutPage {
               public alertCtrl:AlertController
           
       ) { 
-
         this.sub = this.getdataPvder.getabout().subscribe(
           (res) => {
             if(res == null){
@@ -29,12 +28,10 @@ export class SettingaboutPage {
           },
           (error) => {this.errorMessage = <any> error
         });
-
       }
 
 
   save(){
-
     this.sub = this.getdataPvder.saveabout(this.email,this.phone).subscribe(
       (res) => {
         let alert = this.alertCtrl.create({
@@ -45,8 +42,6 @@ export class SettingaboutPage {
       },
       (error) => {this.errorMessage = <any> error
     });
-
-    
   }
 
   ionViewDidLoad() {

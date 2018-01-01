@@ -16,6 +16,9 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class GetdataProvider {
   url = 'http://www.pattayapal.com/';
+  key:string = 'AIzaSyCt6PXdnwdBEYC7KfX0xd02tOyqhl5C2C4';
+  playlist:string = 'PL79f4WYJSRRFacMRxolAwYEYDtag2jWnd';
+
   constructor( public http: Http) {
     console.log('Hello GetdataProvider Provider');
   }
@@ -31,6 +34,13 @@ export class GetdataProvider {
     .map((res:Response)=><Login[]> res.json())
     .catch(this.handleError);    
   }
+
+  getUser(email:any):Observable<Login[]>{
+    return this.http.get(this.url+'api/user.php?Mode=getUser&Email='+email)
+    .map((res:Response)=><Login[]> res.json())
+    .catch(this.handleError);    
+  }
+
   InsertUser(email:string,password:string,phone:number=0,sex:string=''):Observable<Login[]>{
     return this.http.get(this.url+'api/user.php?Mode=Insert&Email='+email+'&Pass='+password+'&Phone='+phone+'&Sex='+sex)
     .map((res:Response)=><Login[]> res.json())
@@ -45,6 +55,7 @@ export class GetdataProvider {
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
+
   saveabout(email:string,phone:number){
     return this.http.get(this.url+'api/user.php?Mode=SaveAbout&email='+email+'&phone='+phone )
     .map((res:Response)=> ( res.json()) )
@@ -63,4 +74,12 @@ export class GetdataProvider {
     .catch(this.handleError);    
   }
 
+  getListVideo(){
+    return this.http.get("https://www.googleapis.com/youtube/v3/playlistItems?key="+this.key +"&playlistId="+this.playlist+"&part=snippet")   
+    .map(res => {
+     return res.json()['items'];
+    })
+  }
+
+  
   }

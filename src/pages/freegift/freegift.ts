@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, transition } from '@angular/core';
 import { NavController, NavParams,AlertController } from 'ionic-angular';
 import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,7 +17,8 @@ export class FreegiftPage {
   condition : any;
   sub: Subscription;
   errorMessage:string;
-
+  showImage = true;
+  hideImage = false;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -39,6 +40,8 @@ export class FreegiftPage {
     this.today = '';
     this.tomorrow = '';
     this.show = 'hidden'
+    this.showImage = true;
+    this.hideImage = false;
     if(date == 'yesterday'){
       this.sub = this.getdataPvder.getPromotion('Yesterday').subscribe(
         (res) => {
@@ -49,6 +52,8 @@ export class FreegiftPage {
             this.detail = res['detail'];
             this.condition = res['condition_pro']
             this.image = res['image']
+            this.showImage = false;
+            this.hideImage = true;
           }
         },
         (error) => {this.errorMessage = <any> error
@@ -69,6 +74,8 @@ export class FreegiftPage {
             this.detail = res['detail'];
             this.condition = res['condition_pro']
             this.image = res['image']
+            this.showImage = false;
+            this.hideImage = true;
           }
         },
         (error) => {this.errorMessage = <any> error
@@ -92,6 +99,8 @@ export class FreegiftPage {
             this.detail = res['detail'];
             this.condition = res['condition_pro']
             this.image = res['image']
+            this.showImage = false;
+            this.hideImage = true;
           }
         },
         (error) => {this.errorMessage = <any> error

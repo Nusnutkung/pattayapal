@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Profile</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <img [src]="image"   style="width:100%;height:auto;" *ngIf="email" (click)='actionSheet()'>
+        <img src="http://www.pattayapal.com/api/images/introduction/1.jpg" *ngIf="!email" (click)='actionSheet()' style="width:100%;height:auto;">
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label color="primary"  style="font-size:20px" floating >อีเมล์</ion-label>
+        <ion-input type="text" [(ngModel)]='email' readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="primary"  style="font-size:20px" floating>เบอร์โทรศัพท์</ion-label>
+        <ion-input type="text" [(ngModel)]='phone' ></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="primary"  style="font-size:20px" floating>เพศ</ion-label>
+        <ion-select [(ngModel)]="sex" >
+          <ion-option value="m">ชาย</ion-option>
+          <ion-option value="f">หญิง</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-row style="text-align:center;">
+      <button ion-button style="width:40%;font-size:20px;">แก้ไขข้อมูล</button>
+    </ion-row>
+</ion-content>

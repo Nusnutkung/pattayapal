@@ -18,7 +18,7 @@
 <h3 class="text-cen">Promotion วันพรุ่งนี้</h3>
     <ion-list >
         <ion-item>
-          <img [src]="ImageUrl" *ngIf='hideImage' style="width:100%;height:auto;">
+          <img src="http://www.pattayapal.com/api/images/{{ImageUrl}}" *ngIf='hideImage' style="width:100%;height:auto;">
           <img src="http://www.pattayapal.com/api/images/introduction/1.jpg" *ngIf="showImage" (click)='actionSheet()' style="width:100%;height:auto;">
         </ion-item>
         <ion-item>

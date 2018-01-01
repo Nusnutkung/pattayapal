@@ -1,0 +1,14 @@
+page-youtube {
+    .item-md ion-thumbnail{ min-height: 0px; }
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img{ width: 140px;height: auto; }
+    .card-content-md, .card-content-ios{  
+        padding: 10px;
+        display: block;
+        position: relative;
+    }
+    .item-md{ padding-left: 5px; padding-right: 5px;  }
+
+
+
+
+}

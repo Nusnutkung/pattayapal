@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Video</ion-title>
+    </ion-navbar>
+</ion-header>
+  
+ 
+
+<ion-content >
+  <ion-row>
+        <ion-card>
+            <img [src]="image" (click)="playVideo()">
+            <ion-card-content>
+              <ion-card-title>
+                {{title}}
+                </ion-card-title>
+              <p>
+               {{description}}
+              </p>
+            </ion-card-content>
+          </ion-card>
+  </ion-row>
+  <ion-list>
+    <ion-item *ngFor="let a of list" (click)="playVideo(a.snippet.resourceId.videoId)">
+      <ion-thumbnail item-start>
+        <img src="{{ a.snippet.thumbnails.medium.url }}" >
+      </ion-thumbnail>
+      <h2 >{{ a.snippet.title }}</h2>
+      <p>{{ a.snippet.description }}</p>
+    </ion-item>
+  </ion-list>
+
+
+
+
+</ion-content>
