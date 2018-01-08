@@ -8,6 +8,9 @@ import { Camera,CameraOptions } from '@ionic-native/camera';
 import { Transfer , TransferObject } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
+import { MyApp } from '../../app/app.component';
+
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
@@ -52,8 +55,6 @@ export class ProfilePage {
                   this.user_id = res['user_id'];
                   this.image = 'http://www.pattayapal.com/api/images/users/'+res["user_id"]+'.jpg';
 
-
-
                 }
               )
             })
@@ -83,8 +84,9 @@ export class ProfilePage {
             }
             this.camera.getPicture(options).then((imageData)=>{
               this.ImageData = imageData;
-              this.image = "data:image/jpeg;base64," + imageData 
+              this.image = "data:image/jpeg;base64," + imageData         
               this.uploadImage();
+
             }, (err) => {
 
              });
@@ -107,9 +109,9 @@ export class ProfilePage {
               this.image = "data:image/jpeg;base64," + imageData 
               this.uploadImage();
             }, (err) => {
+
              });
 
-            
           }
         },
         {
@@ -122,6 +124,7 @@ export class ProfilePage {
   }
 
   uploadImage(){
+
     let options = {
       mimeType: "multipart/form-data",
       params :{
@@ -132,13 +135,37 @@ export class ProfilePage {
     }
   
     let t = this.transfer.create();
-    t.upload(this.image, "http://www.pattayapal.com/api/user.php?Mode=UploadImageUser?user_id="+this.user_id,options).then((res)=>{
+    t.upload(this.image, "http://www.pattayapal.com/api/user.php?Mode=UploadImageUser&user_id="+this.user_id,options).then((res)=>{
+
 
     }).catch((err)=>{
-      console.log('err' + err)
-  
+      let alert = this.alertCtrl.create({
+        message: 'Error',
+        buttons: ['OK']
+      });
+      alert.present();
+      
     })
-  
   }
+
+  saveProfile() {
+
+    this.sub = this.getdataPvder.saveProfile(this.email,this.phone,this.sex,this.user_id).subscribe(
+      (res) => {
+        let alert = this.alertCtrl.create({
+          message: 'บันทึกข้อมูลเรียบร้อย',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.setRoot(MyApp)
+      },
+      (error) => {this.errorMessage = <any> error
+    });
+
+
+  }
+
+
+
 
 }

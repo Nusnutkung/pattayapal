@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ListPage } from '../list/list';
+import { AboutusPage } from '../aboutus/aboutus';
+import { MyApp } from '../../app/app.component';
+
+
 @Component({
   selector: 'page-setting',
   templateUrl: 'setting.html',
@@ -51,7 +55,12 @@ export class SettingPage {
           text: 'OK',
           handler: () => {
             this.clearData()
-            this.navCtrl.setRoot(ListPage);
+
+
+            this.navCtrl.setRoot(MyApp );
+
+
+
 
           }
         }
@@ -60,7 +69,7 @@ export class SettingPage {
     alert.present();
   }
 
-
+  gotoAboutus(){ this.navCtrl.push(AboutusPage) }
   clearData(){
     this.storage.set('Email', null)
     this.storage.set('status', null)

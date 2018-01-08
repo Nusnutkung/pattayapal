@@ -1,0 +1,9 @@
+page-getpromoted {
+    .active{
+        background: white;
+        color: #eb232a;
+    }
+    .show{ display: block ; }
+    .hidden{ display: none; }
+    .button-md, .button-ios{ background: transparent;}
+}

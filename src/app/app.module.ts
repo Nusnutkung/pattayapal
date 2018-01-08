@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, NavParams } from 'ionic-angular';
 import { AboutusPage } from '../pages/aboutus/aboutus';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +15,9 @@ import { GetdataProvider } from '../providers/getdata/getdata';
 import { HttpModule } from '@angular/http';
 import { DetailPage } from '../pages/detail/detail';
 import { YoutubePage } from '../pages/youtube/youtube';
+import { SettingadsPage } from '../pages/settingads/settingads';
+import { UploadimageadsPage } from '../pages/uploadimageads/uploadimageads';
+import { GetpromotedPage } from '../pages/getpromoted/getpromoted';
 import { SettingPage } from '../pages/setting/setting';
 import { ProfilePage } from '../pages/profile/profile';
 import { FreegiftPage } from '../pages/freegift/freegift';
@@ -43,7 +46,10 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     UploadModalPage,
     SettingaboutPage,
     YoutubePage,
-    ProfilePage
+    ProfilePage,
+    GetpromotedPage,
+    SettingadsPage,
+    UploadimageadsPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +72,10 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     UploadModalPage,
     SettingaboutPage,
     YoutubePage,
-    ProfilePage
+    ProfilePage,
+    GetpromotedPage,
+    SettingadsPage,
+    UploadimageadsPage
   ],
   providers: [
     StatusBar,

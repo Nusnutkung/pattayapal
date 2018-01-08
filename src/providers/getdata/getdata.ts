@@ -73,12 +73,30 @@ export class GetdataProvider {
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
+  saveProfile(email:string,phone:number,sex:string,user_id:string){
+    return this.http.get(this.url+'api/user.php?Mode=saveProfile&email='+email+'&phone='+phone+'&sex='+sex+'&user_id='+user_id )
+    .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);    
+  }
 
   getListVideo(){
     return this.http.get("https://www.googleapis.com/youtube/v3/playlistItems?key="+this.key +"&playlistId="+this.playlist+"&part=snippet")   
     .map(res => {
      return res.json()['items'];
     })
+  }
+
+  promote(email,promotion_id){
+    return this.http.get(this.url+'api/user.php?Mode=promote&email='+email+'&promotion_id='+promotion_id )
+    .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);    
+  }
+
+  getListPromoted(date){
+    return this.http.get(this.url+'api/user.php?Mode=getListPromoted&day='+date)
+    .map(res => {
+      return res.json();
+     })    
   }
 
   

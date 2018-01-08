@@ -76,7 +76,6 @@ export class SettingpromotionPage {
       },
       (error) => {this.errorMessage = <any> error
     });
-
   }
 
   actionSheet(){

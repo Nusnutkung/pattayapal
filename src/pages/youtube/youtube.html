@@ -5,14 +5,15 @@
       </button>
       <ion-title>Video</ion-title>
     </ion-navbar>
+
 </ion-header>
   
  
 
 <ion-content >
-  <ion-row>
+  <ion-row class='borderbottom'>
         <ion-card>
-            <img [src]="image" (click)="playVideo()">
+          <img [src]="image" (click)="playVideo()">
             <ion-card-content>
               <ion-card-title>
                 {{title}}
@@ -21,6 +22,7 @@
                {{description}}
               </p>
             </ion-card-content>
+            
           </ion-card>
   </ion-row>
   <ion-list>

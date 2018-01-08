@@ -3,16 +3,13 @@
     <ion-toolbar style="height:200px;" *ngIf="!email">
       <ion-title>เข้าสู่ระบบเพื่อรับสิทธิประโยชน์</ion-title>
      <div style="text-align:center;margin-top:30px;"> 
-       <button ion-button style="width:40%;font-size: 14pt;" (click)='gotoIntro()' >เข้าสู่ระบบ</button>
+       <button menuClose ion-button style="width:40%;font-size: 14pt;" (click)='gotoIntro()' >เข้าสู่ระบบ</button>
       </div>
     </ion-toolbar>
 
     <ion-toolbar style="height:200px;" *ngIf="email" style="padding:0px;">
-      <img src="http://www.pattayapal.com/api/images/users/1.jpg" style="width:100%;height:auto;">
-     <div style="text-align:center;" (click)='gotoProfile()' menuClose> 
-       <!-- <button ion-button style="width:40%;font-size: 14pt;" (click)='gotoIntro()' >ดูข้อมูลส่วนตัว</button> -->
-      <p style="font-size: 14pt;color:white" >ดูข้อมูลส่วนตัว</p>
-      </div>
+      <img [src]="image" style="width:100%;height:auto;">
+
     </ion-toolbar>
 
 
@@ -21,11 +18,19 @@
   </ion-header>
 
   <ion-content>
+      <ion-list *ngIf="email">
+      <div (click)='gotoProfile()' menuClose> 
+          <button menuClose ion-item (click)="gotopromoted()" >ดูข้อมูลส่วนตัว</button>
+      </div>
+      </ion-list>
   <div *ngIf='status'>
       <ion-list-header  style="background: #dcdcdc;font-size: 20px;color:black;font-weight: 600;" >Admin</ion-list-header>
+
       <ion-list>
           <button menuClose ion-item (click)="gotoSettingpromotionPage()" >ตั้งค่าโปรโมชั่น</button>
           <button menuClose ion-item (click)="gotoSettingabout()" >ตั้งค่าเกี่ยวกับ</button>
+          <button menuClose ion-item (click)="gotoSettingAds()" >ตั้งค่าโฆษณา</button>
+          <button menuClose ion-item (click)="gotopromoted()" >คนลงทะเบียน</button>
           <!-- <button menuClose ion-item (click)="openPage(p)" >a</button> -->
       </ion-list>
   
@@ -34,12 +39,24 @@
     <ion-list >
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" >
         <div >
-        <img src="assets/menu/{{p.title}}.png" style="width:35px;margin-bottom: -8px;"><span style='font-size: 20px;padding-left:10px;'> {{p.title}}</span>
+        <img src="http://pattayapal.com/api/images/icon/{{p.title}}.png" style="width:35px;margin-bottom: -8px;"><span style='font-size: 20px;padding-left:10px;'> {{p.title}}</span>
         </div>
       </button>
     </ion-list>
 
+
+
+
+
+
+    <div >
+        <img src="http://pattayapal.com/api/images/ads/หน้าเมนู.png">
+    </div>
+
   </ion-content>
+
+
+
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

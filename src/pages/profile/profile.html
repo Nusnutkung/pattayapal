@@ -12,7 +12,7 @@
 
     <ion-item>
         <img [src]="image"   style="width:100%;height:auto;" *ngIf="email" (click)='actionSheet()'>
-        <img src="http://www.pattayapal.com/api/images/introduction/1.jpg" *ngIf="!email" (click)='actionSheet()' style="width:100%;height:auto;">
+        <img src="http://www.pattayapal.com/api/images/users/no_profile.jpg" *ngIf="!email" (click)='actionSheet()' style="width:100%;height:auto;">
     </ion-item>
 
 
@@ -34,7 +34,7 @@
         </ion-select>
     </ion-item>
 
-    <ion-row style="text-align:center;">
-      <button ion-button style="width:40%;font-size:20px;">แก้ไขข้อมูล</button>
-    </ion-row>
+    <div style="text-align:center;">
+      <button ion-button style="width:40%;font-size:20px;" (click)="saveProfile()">แก้ไขข้อมูล</button>
+    </div>
 </ion-content>

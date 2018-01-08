@@ -7,6 +7,9 @@ import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
 import { Login } from '../../models/login';
 import { Storage } from '@ionic/storage';
+import { MyApp } from '../../app/app.component';
+
+
 @Component({
   selector: 'page-intro',
   templateUrl: 'intro.html',
@@ -52,10 +55,10 @@ export class IntroPage {
         }else{
           this.Login = res
           this.status = res['status'];
-          this.gotoHomePage();
           this.storage.set('Email', this.email);
-          this.storage.set('Password', this.pass);
+          // this.storage.set('Password', this.pass);
           this.storage.set('status', res['status']);
+          this.navCtrl.setRoot(MyApp);
         }
        
       },

@@ -2,6 +2,8 @@ import { Component, transition } from '@angular/core';
 import { NavController, NavParams,AlertController } from 'ionic-angular';
 import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
+import { Storage } from '@ionic/storage';
+
 @Component({
   selector: 'page-freegift',
   templateUrl: 'freegift.html',
@@ -19,16 +21,24 @@ export class FreegiftPage {
   errorMessage:string;
   showImage = true;
   hideImage = false;
-
+  login = false;
+  email:any;
+  pro_id:any;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public getdataPvder: GetdataProvider,
-              public alertCtrl:AlertController
-            
+              public alertCtrl:AlertController,
+              public storage:Storage
             ) {
-
-
     this.share('today');
+
+    storage.get('Email').then((val)=>{
+      if(val != null){
+          this.login = true;
+          this.email = val;
+      }
+    })
+
   }
 
   ionViewDidLoad() {
@@ -36,13 +46,14 @@ export class FreegiftPage {
   }
 
   share(date){
-    this.yesterday = 'active';
-    this.today = '';
-    this.tomorrow = '';
-    this.show = 'hidden'
-    this.showImage = true;
-    this.hideImage = false;
+
     if(date == 'yesterday'){
+      this.yesterday = 'active';
+      this.today = '';
+      this.tomorrow = '';
+      this.show = 'hidden'
+      this.showImage = true;
+      this.hideImage = false;
       this.sub = this.getdataPvder.getPromotion('Yesterday').subscribe(
         (res) => {
           if(res == null){
@@ -54,6 +65,7 @@ export class FreegiftPage {
             this.image = res['image']
             this.showImage = false;
             this.hideImage = true;
+            this.pro_id = res['promotion_id'];
           }
         },
         (error) => {this.errorMessage = <any> error
@@ -76,6 +88,7 @@ export class FreegiftPage {
             this.image = res['image']
             this.showImage = false;
             this.hideImage = true;
+            this.pro_id = res['promotion_id'];
           }
         },
         (error) => {this.errorMessage = <any> error
@@ -88,7 +101,8 @@ export class FreegiftPage {
       this.today = '';
       this.tomorrow = 'active';
       this.show = 'show'
-
+      this.showImage = true;
+      this.hideImage = false;
       this.sub = this.getdataPvder.getPromotion('Tomorrow').subscribe(
         (res) => {
           if(res == null){
@@ -101,6 +115,7 @@ export class FreegiftPage {
             this.image = res['image']
             this.showImage = false;
             this.hideImage = true;
+            this.pro_id = res['promotion_id'];
           }
         },
         (error) => {this.errorMessage = <any> error
@@ -112,15 +127,32 @@ export class FreegiftPage {
     this.title = 'ยังไม่มีโปรโมชั่น';
     this.detail = 'ยังไม่มีโปรโมชั่น';
     this.condition = 'ยังไม่มีโปรโมชั่น';
+    this.pro_id = '';
   }
 
 
   getLucky(){
+    if(this.login == false){
     let alert = this.alertCtrl.create({
       message: 'กรุณา ล็อคอิน',
       buttons: ['OK']
     });
     alert.present();
+  }else{
+    this.getdataPvder.promote(this.email,this.pro_id).subscribe((res)=>{
+      if(res['result'] == 'Error'){
+        let alert = this.alertCtrl.create({
+          message: 'คุณได้ลงทะเบียนแล้ว',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
+
+    });
+
+  }
+
+
   }
 
 
