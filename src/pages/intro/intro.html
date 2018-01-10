@@ -1,27 +1,45 @@
-<ion-content class="tutorial-page">
-  <div style="text-align:center">
-      <img src="http://www.pattayapal.com/api/images/introduction/1.jpg"   style="width:70%;" >
+<ion-content class="tutorial-page  " id="animation" style="background: #eb232a;" *ngIf='!run'>
+    <img src="assets/intro/pattayapal.gif"   style="width:100%;" >
+</ion-content>
+
+<ion-content class="tutorial-page fadeIn " id="login" style="background: #eb232a;" *ngIf='run'>
+  <div style="text-align:right;padding: 10px;color:white;font-weight:600;text-decoration: underline;">
+    <span (click)="gotoHomePage()">ข้ามขั้นตอนนี้</span>  
   </div>
+  <div style="text-align:center">
+      <img src="assets/intro/logo.png"   style="width:35%;" >
+  </div>
+
   <ion-list >
-      
-        <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input type="email" [(ngModel)]='email' ></ion-input>
+    <div style="text-align:center;margin-top: 20px;margin-left:5%;margin-right:5%;" class="front">
+        <ion-item >
+          <ion-label fixed>Username</ion-label>
+          <ion-input type="text" [(ngModel)]='email' ></ion-input>
         </ion-item>
-      
+      </div>  
+      <div style="text-align:center;margin-top: 20px;margin-left:5%;margin-right:5%;" class="front">
         <ion-item>
-          <ion-label floating>Password</ion-label>
+          <ion-label fixed>Password</ion-label>
           <ion-input type="password" [(ngModel)]='pass'></ion-input>
         </ion-item>
-      
+        </div>
   </ion-list>
 
-    <div style="text-align:center">
-      <button ion-button style="width:40%;font-size: 14pt;" (click)='register()'>สมัครสมาชิก</button>
-      <button ion-button style="width:40%;font-size: 14pt;" (click)='login()'>เข้าสู่ระบบ</button>
-    </div>
-    <div style="text-align:center;margin-top: 20px;">
-       <span (click)="gotoHomePage()">ข้ามขั้นตอนนี้</span> 
+  <ion-list style="text-align:center;" class="front">
+      <img src="assets/slider/login.png"  (click)='login()'  style="width:80%;" >
+  </ion-list>
+  
+  <ion-list class="front" style="text-align:center;color:white;font-size: 14pt;font-weight:600;">
+      <span  (click)='register()'>สมัครสมาชิก |</span>
+      <span  (click)='login()'> ลืมรหัสผ่าน </span>
+    </ion-list>
+
+  <ion-list style="text-align:center;" class="front">
+      <img src="assets/slider/facebook.png"   style="width:80%;" >
+    </ion-list>
+
+    <div class="behide" style="position: absolute;bottom:0;" >
+        <img src="assets/intro/bot.png"   style="width:100%;bottom: 0; position: fixed;" >
     </div>
 
 </ion-content>

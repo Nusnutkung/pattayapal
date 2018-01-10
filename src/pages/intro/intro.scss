@@ -2,4 +2,70 @@ page-intro {
     .list-md .item-input:last-child{
         border-bottom: 1px solid #dedede;
     }
+    .item-md{
+        border-radius: 30px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+    }
+    .item-input .label-md, .item-select .label-md, .item-datetime .label-md{
+        font-weight: 600;
+        // color: black;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom:0px solid !important;
+    }
+    .input-has-focus:last-child{
+        box-shadow: none !important;
+        border-bottom:0px solid !important;
+    }
+    #animation{
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    #login{
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+     @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+     }
+     
+     @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+     }
+     
+     .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+     }
+     @-webkit-keyframes fadeOut {
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+     }
+     
+     @keyframes fadeOut {
+        0% {opacity: 1;}
+        100% {opacity: 0;}
+     }
+     
+     .fadeOut {
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+     }
+     .behide{
+        display: block;
+        z-index: 3;
+     }
+     .front{
+        display: block;
+        z-index: 5;
+        position: relative;
+     }
 }

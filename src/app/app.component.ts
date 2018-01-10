@@ -48,10 +48,14 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Favorites', component: HomePage },
-      { title: 'News', component: ListPage },
-      { title: 'Youtube', component: YoutubePage },
-      { title: 'Promotion', component: FreegiftPage },
-      { title: 'เกี่ยวกับ', component: AboutusPage },
+      // { title: 'News', component: ListPage },
+      { title: 'Free Gifts', component: FreegiftPage },
+      { title: 'ร้านอาหาร', component: FreegiftPage },
+      { title: 'ที่พัก', component: FreegiftPage },
+      { title: 'Shopping', component: FreegiftPage },
+      { title: 'Playlists', component: FreegiftPage },
+      // { title: 'Youtube', component: YoutubePage },
+      // { title: 'เกี่ยวกับ', component: AboutusPage },
       { title: 'การตั้งค่า', component: SettingPage }
       
 

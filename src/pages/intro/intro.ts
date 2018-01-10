@@ -21,6 +21,8 @@ export class IntroPage {
   email:string = '';
   pass:string= '';
   status:string= '';
+  run = false;
+  count = 0;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public getdataPvder: GetdataProvider,
@@ -28,6 +30,14 @@ export class IntroPage {
               public storage:Storage
               
       ) {
+        let sett = setInterval((function () {
+          this.count++;
+           if(this.count == '10'){
+             this.run= true;
+             clearInterval(sett);
+             return ;
+           } 
+        }).bind(this), 300);
   }
 
   ionViewDidLoad() {
