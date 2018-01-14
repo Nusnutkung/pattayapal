@@ -17,6 +17,17 @@
 
 $backcolor : #eb232a;
 $bordercolor : #dedede;
+@import url('https://fonts.googleapis.com/css?family=Kanit');
+ion-app.md{
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+}
+body {
+    font-family: 'Kanit', sans-serif;
+  }
+@font-face{
+    font-family: 'Kanit', sans-serif;
+}
 
 .title , .title-md{
     text-align: center;
@@ -60,7 +71,7 @@ img.alignnone.size-medium, img.aligncenter.size-full, img.aligncenter, img.align
     margin-bottom: 10px;
 }
 .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
-    position: absolute;
+    // position: absolute;
     z-index: 99999
 }
 .toolbar-background-md{ background: $backcolor; }

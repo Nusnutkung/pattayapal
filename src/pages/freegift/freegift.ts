@@ -3,6 +3,7 @@ import { NavController, NavParams,AlertController } from 'ionic-angular';
 import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
 import { Storage } from '@ionic/storage';
+import { SettingpromotionPage } from '../settingpromotion/settingpromotion';
 
 @Component({
   selector: 'page-freegift',
@@ -24,6 +25,7 @@ export class FreegiftPage {
   login = false;
   email:any;
   pro_id:any;
+  status:any;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public getdataPvder: GetdataProvider,
@@ -38,7 +40,16 @@ export class FreegiftPage {
           this.email = val;
       }
     })
-
+    storage.get('status').then((val)=>{
+      console.log('status  ')
+      if(val != null){
+          this.login = true;
+          this.status = val;
+          console.log('val true  '+ val)
+      }else{
+        console.log('val false  '+ val)
+      }
+    })
   }
 
   ionViewDidLoad() {
@@ -155,6 +166,6 @@ export class FreegiftPage {
 
   }
 
-
+  gotoSettingpromotionPage(){ this.navCtrl.push(SettingpromotionPage); }
 
 }

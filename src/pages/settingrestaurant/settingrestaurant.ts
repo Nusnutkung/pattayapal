@@ -10,10 +10,10 @@ import { FilePath } from '@ionic-native/file-path';
 import { Platform } from 'ionic-angular/platform/platform';
 
 @Component({
-  selector: 'page-settingpromotion',
-  templateUrl: 'settingpromotion.html',
+  selector: 'page-settingrestaurant',
+  templateUrl: 'settingrestaurant.html',
 })
-export class SettingpromotionPage {
+export class SettingrestaurantPage {
   title:string;
   detail:string;
   condition:string;
@@ -24,7 +24,10 @@ export class SettingpromotionPage {
   hideImage = false;
   ImageData:any;
   pro_id: any;
-
+  price: any;
+  lat:any = '12.916984';
+  lng:any = '100.896238';
+  
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private camera: Camera, 
@@ -42,18 +45,18 @@ export class SettingpromotionPage {
 
 
 
-              this.sub = this.getdataPvder.getPromotion('Tomorrow').subscribe(
-                (res)=>{
-                  if(res != null){
-                    this.hideImage = true;
-                    this.showImage = false;
-                    this.pro_id = res['promotion_id'];
-                    this.title = res['title'];
-                    this.detail = res['detail'];
-                    this.condition = res['condition_pro'];
-                    this.ImageUrl = res['image'];
-                  }
-                })
+              // this.sub = this.getdataPvder.getPromotion('Tomorrow').subscribe(
+              //   (res)=>{
+              //     if(res != null){
+              //       this.hideImage = true;
+              //       this.showImage = false;
+              //       this.pro_id = res['id'];
+              //       this.title = res['title'];
+              //       this.detail = res['short_detail'];
+              //       this.condition = res['long_detail'];
+              //       this.ImageUrl = res['image'];
+              //     }
+              //   })
 
 
 
@@ -63,9 +66,9 @@ export class SettingpromotionPage {
     console.log('ionViewDidLoad SettingpromotionPage');
   }
 
-  savePromotion() {
+  saveRestaurant() {
     // console.log('condition ' + this.condition)
-    this.sub = this.getdataPvder.savePromotion(this.title,this.detail,this.condition,this.pro_id).subscribe(
+    this.sub = this.getdataPvder.saveRestaurant(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id).subscribe(
       (res) => {
         let alert = this.alertCtrl.create({
           message: 'บันทึกข้อมูลเรียบร้อย',
@@ -99,9 +102,10 @@ export class SettingpromotionPage {
               this.ImageUrl = "data:image/jpeg;base64," + imageData 
               this.showImage = false;
               this.hideImage = true;
+              console.log('SUCCESS');
               this.uploadImage();
             }, (err) => {
-
+              console.log('err');
              });
 
           }
@@ -122,8 +126,11 @@ export class SettingpromotionPage {
               this.ImageUrl = "data:image/jpeg;base64," + imageData 
               this.showImage = false;
               this.hideImage = true;
+              console.log('SUCCESS');
               this.uploadImage();
             }, (err) => {
+              console.log('err');
+              
              });
 
             
@@ -139,20 +146,24 @@ export class SettingpromotionPage {
   }
 
 uploadImage(){
+  console.log('uploadImage')
   let options = {
     mimeType: "multipart/form-data",
     params :{
       data: this.ImageUrl,
-      name: 'test',
-      Mode: 'UploadImage'
+      id: this.pro_id,
+      Mode: 'UploadImageRestaurant'
     }
   }
 
   let t = this.transfer.create();
-  t.upload(this.ImageUrl, "http://www.pattayapal.com/api/user.php?Mode=UploadImage",options).then((res)=>{
+  t.upload(this.ImageUrl, "http://www.pattayapal.com/api/user.php?Mode=UploadImageRestaurant",options).then((res)=>{
   this.pro_id = res['id'];
-  this.ImageUrl = res['image'];
-
+  // this.ImageUrl = res['image'];
+  console.log('res ' + JSON.stringify(res) )
+  console.log('res ' + res['response']['id'] )
+  console.log('res ' + res.response['id'] )
+  console.log('res ' + res['id'] )
   }).catch((err)=>{
     console.log('err' + err)
     this.showImage = true;

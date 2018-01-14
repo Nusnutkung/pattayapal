@@ -23,6 +23,7 @@ export class IntroPage {
   status:string= '';
   run = false;
   count = 0;
+  firsttime:any;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public getdataPvder: GetdataProvider,
@@ -30,14 +31,25 @@ export class IntroPage {
               public storage:Storage
               
       ) {
+         storage.get('Firsttime').then( (val) =>{
+          this.firsttime = val ;
+
+        if(val === 1){
+          this.run= true;
+          return ;
+        }
+        
         let sett = setInterval((function () {
           this.count++;
-           if(this.count == '10'){
+           if(this.count == '12'){
              this.run= true;
              clearInterval(sett);
              return ;
            } 
         }).bind(this), 300);
+      
+    })
+
   }
 
   ionViewDidLoad() {
@@ -47,6 +59,7 @@ export class IntroPage {
 
   gotoHomePage(){
     this.navCtrl.setRoot(ListPage);
+    this.storage.set('Firsttime',1);
   }
   register(){
     this.navCtrl.push(RegisterPage);
@@ -68,6 +81,7 @@ export class IntroPage {
           this.storage.set('Email', this.email);
           // this.storage.set('Password', this.pass);
           this.storage.set('status', res['status']);
+          
           this.navCtrl.setRoot(MyApp);
         }
        

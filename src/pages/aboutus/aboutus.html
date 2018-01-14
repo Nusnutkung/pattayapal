@@ -1,9 +1,16 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Pattayapal</ion-title>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+        </ion-buttons>
+        <ion-title>เกี่ยวกับเรา</ion-title>
+        <ion-buttons right *ngIf='status'>
+            <button right ion-button icon-only (click)="gotoSettingabout()">
+                <ion-icon name="add" ></ion-icon>
+            </button>
+        </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.pattayapal" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.pattayapal" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Pattaya Pal</name>
     <description>Pattaya Pal</description>
     <author email="nusnutkungdev@gmail.com" href="http://pattayapal.com/">Pattaya Pal</author>
@@ -15,9 +15,9 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="FadeSplashScreenDuration" value="300" />
-    <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="none" />
+    <preference name="FadeSplashScreenDuration" value="0" />
+    <preference name="ShowSplashScreen" value="false" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -87,4 +87,11 @@
     <plugin name="cordova-plugin-filepath" spec="^1.1.0" />
     <plugin name="cordova-plugin-file" spec="^5.0.0" />
     <plugin name="cordova-plugin-youtube-video-player" spec="^1.0.6" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.1.1">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyC07-JzuEmbYxsfkwCQCJFGvGOud-UxEOw" />
+        <variable name="API_KEY_FOR_IOS" value="AIzaSyC07-JzuEmbYxsfkwCQCJFGvGOud-UxEOw" />
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Show your location on the map" />
+        <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Trace your location on the map" />
+    </plugin>
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
 </widget>

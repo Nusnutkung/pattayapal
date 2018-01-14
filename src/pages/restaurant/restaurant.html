@@ -1,0 +1,33 @@
+
+<ion-header>
+    <ion-navbar>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+        </ion-buttons>
+        <ion-title>อาหาร</ion-title>
+        <ion-buttons right *ngIf='status'>
+            <button right ion-button icon-only (click)="gotoSettingres()">
+                <ion-icon name="add" ></ion-icon>
+            </button>
+        </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+    <ion-card style="height:310px;margin-bottom:20px;" *ngFor="let c of getdata">
+        <div class='divpictureNews' >
+          <img [src]="(c.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+c.meta_value : '../../assets/slider/icon.png'" style="max-width:100%;" class="pictureNews imgHomeNews">
+        </div>
+        <ion-card-content style=" background: rgba(255, 255, 255, 0.7);width:100%;">
+          <ion-card-title  >
+              {{c.post_title}}
+          </ion-card-title>
+          <button ion-button (click)='gotoNews(c)' >อ่านข่าวนี้...</button>
+        </ion-card-content>
+      </ion-card>
+  
+</ion-content>

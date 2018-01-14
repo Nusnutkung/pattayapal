@@ -73,6 +73,11 @@ export class GetdataProvider {
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
+  saveRestaurant(title:string,detail:string,condition:string,lat,lng,price,id){
+    return this.http.get(this.url+'api/user.php?Mode=saveRestaurant&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id)
+    .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);    
+  }
   saveProfile(email:string,phone:number,sex:string,user_id:string){
     return this.http.get(this.url+'api/user.php?Mode=saveProfile&email='+email+'&phone='+phone+'&sex='+sex+'&user_id='+user_id )
     .map((res:Response)=> ( res.json()) )

@@ -17,6 +17,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { Subscription } from 'rxjs/Subscription';
 import { GetdataProvider } from '../providers/getdata/getdata';
 import { GetpromotedPage } from '../pages/getpromoted/getpromoted';
+import { CommingsoonPage } from '../pages/commingsoon/commingsoon';
+import { RestaurantPage } from '../pages/restaurant/restaurant';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,7 +44,7 @@ export class MyApp {
             ) {
 
               console.log('MYAPPPPPPPP     ')
-
+    this.splashScreen.hide();
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -50,10 +52,10 @@ export class MyApp {
       { title: 'Favorites', component: HomePage },
       // { title: 'News', component: ListPage },
       { title: 'Free Gifts', component: FreegiftPage },
-      { title: 'ร้านอาหาร', component: FreegiftPage },
-      { title: 'ที่พัก', component: FreegiftPage },
-      { title: 'Shopping', component: FreegiftPage },
-      { title: 'Playlists', component: FreegiftPage },
+      { title: 'ร้านอาหาร', component: RestaurantPage },
+      { title: 'ที่พัก', component: CommingsoonPage },
+      { title: 'Shopping', component: CommingsoonPage },
+      { title: 'Playlists', component: YoutubePage },
       // { title: 'Youtube', component: YoutubePage },
       // { title: 'เกี่ยวกับ', component: AboutusPage },
       { title: 'การตั้งค่า', component: SettingPage }
@@ -63,11 +65,9 @@ export class MyApp {
     ];
 
 
-      storage.get('Email').then((val) => {
-        console.log(' Email ')      
+      storage.get('Email').then((val) => {   
         if(val != null){
-          this.email = val;
-          console.log(' val ' + val)   
+          this.email = val; 
           this.sub = this.getdataPvder.getUser(val).subscribe(
             (res) =>{
               this.user_id = res['user_id'];
@@ -85,7 +85,11 @@ export class MyApp {
       })
         }
       });
-
+      storage.get('Firsttime').then((val) => {   
+      if (val){
+        this.nav.setRoot(ListPage);
+      }
+    });
 
 
 
@@ -97,7 +101,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      // this.splashScreen.hide();
     });
   }
 

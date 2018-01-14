@@ -29,7 +29,12 @@ import { Transfer } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
-
+import { NearmePage } from '../pages/nearme/nearme';
+import { CommingsoonPage } from '../pages/commingsoon/commingsoon';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Geolocation } from '@ionic-native/geolocation';
+import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { SettingrestaurantPage } from '../pages/settingrestaurant/settingrestaurant';
 
 @NgModule({
   declarations: [
@@ -49,13 +54,18 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     ProfilePage,
     GetpromotedPage,
     SettingadsPage,
-    UploadimageadsPage
+    UploadimageadsPage,
+    NearmePage,
+    CommingsoonPage,
+    RestaurantPage,
+    SettingrestaurantPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -75,7 +85,11 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     ProfilePage,
     GetpromotedPage,
     SettingadsPage,
-    UploadimageadsPage
+    UploadimageadsPage,
+    NearmePage,
+    CommingsoonPage,
+    RestaurantPage,
+    SettingrestaurantPage
   ],
   providers: [
     StatusBar,
@@ -86,7 +100,9 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     Transfer,
     FilePath,
     File,
-    YoutubeVideoPlayer
+    YoutubeVideoPlayer,
+    GoogleMaps,
+    Geolocation
     
   ]
 })

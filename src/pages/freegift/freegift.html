@@ -1,11 +1,20 @@
 <ion-header>
     <ion-navbar>
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title>Free Gift</ion-title>
+        <ion-buttons left>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+        </ion-buttons>
+        <ion-title>Free Gift</ion-title>
+        <ion-buttons right *ngIf='status'>
+            <button right ion-button icon-only (click)="gotoSettingpromotionPage()">
+                <ion-icon name="add" ></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
-    <ion-row class="toolbar toolbar-background-md border-top-black">
+
+
+    <ion-row class="toolbar toolbar-background-md ">
       <ion-col col-4 class=" text-cen font-width font-white  {{yesterday}}" id="yesterday" (click)='share("yesterday")'  >เมื่อวาน</ion-col>
       <ion-col col-4 class=" text-cen font-width font-white  {{today}}" id="today" (click)='share("today")'>วันนี้</ion-col>
       <ion-col col-4 class=" text-cen font-width font-white {{tomorrow}}" id="tomorrow" (click)='share("tomorrow")'>พรุ่งนี้</ion-col>

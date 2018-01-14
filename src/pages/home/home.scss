@@ -1,3 +1,12 @@
 page-home {
-
+    .active{
+        background: white;
+        color: #eb232a;
+    }
+    .show{ display: block ; }
+    .hidden{ display: none; }
+    .bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+        position: absolute;
+        z-index: 99999
+    }
 }
