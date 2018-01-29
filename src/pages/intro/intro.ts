@@ -41,7 +41,7 @@ export class IntroPage {
         
         let sett = setInterval((function () {
           this.count++;
-           if(this.count == '12'){
+           if(this.count == '18'){
              this.run= true;
              clearInterval(sett);
              return ;
@@ -51,14 +51,8 @@ export class IntroPage {
     })
 
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
-    
-  }
-
   gotoHomePage(){
-    this.navCtrl.setRoot(ListPage);
+    this.navCtrl.setRoot(HomePage);
     this.storage.set('Firsttime',1);
   }
   register(){

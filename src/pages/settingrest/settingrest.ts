@@ -18,12 +18,13 @@ import {
   MarkerOptions,
   Marker
  } from '@ionic-native/google-maps';
+import { MyApp } from '../../app/app.component';
  declare var google:any;
 @Component({
-  selector: 'page-settingrestaurant',
-  templateUrl: 'settingrestaurant.html',
+  selector: 'page-settingrest',
+  templateUrl: 'settingrest.html',
 })
-export class SettingrestaurantPage {
+export class SettingrestPage {
   @ViewChild('map') mapRef: ElementRef;
   title:string;
   detail:string;
@@ -61,7 +62,7 @@ export class SettingrestaurantPage {
                 this.pro_id = this.data['id'];
                 this.showImage = false;
                 this.hideImage = true;
-                this.ImageUrl = 'http://www.pattayapal.com/api/images/restaurant/'+this.data['id']+'.jpg';
+                this.ImageUrl = 'http://www.pattayapal.com/api/images/rest/'+this.data['id']+'.jpg';
                 this.price = this.data['price'];
                 this.lat = this.data['lat'];
                 this.lng = this.data['lng'];
@@ -78,17 +79,19 @@ export class SettingrestaurantPage {
     this.loadMap(this.lat , this.lng);
   }
 
-  saveRestaurant() {
+  saveRest() {
 
     console.log('saveRestaurant '+ this.lat+' :: '+this.lng)
-    this.sub = this.getdataPvder.saveRestaurant(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id).subscribe(
+    this.sub = this.getdataPvder.saveRest(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id).subscribe(
       (res) => {
         let alert = this.alertCtrl.create({
           message: 'บันทึกข้อมูลเรียบร้อย',
           buttons: ['OK']
         });
         alert.present();
-        this.resetvalue();
+
+        // this.resetvalue();
+        this.navCtrl.setRoot(MyApp);
       },
       (error) => {this.errorMessage = <any> error
     });
@@ -165,12 +168,12 @@ uploadImage(){
     params :{
       data: this.ImageUrl,
       id: this.pro_id,
-      Mode: 'UploadImageRestaurant'
+      Mode: 'UploadImageRest'
     }
   }
 
   let t = this.transfer.create();
-  t.upload(this.ImageUrl, "http://www.pattayapal.com/api/user.php?Mode=UploadImageRestaurant",options).then((res)=>{
+  t.upload(this.ImageUrl, "http://www.pattayapal.com/api/user.php?Mode=UploadImageRest",options).then((res)=>{
   let cutStr = res.response.split('["');
   cutStr = cutStr[1].split('"]');
   this.pro_id = cutStr[0];

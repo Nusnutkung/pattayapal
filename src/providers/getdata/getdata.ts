@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import { Restaurant } from '../../models/restaurant';
 
 /*
   Generated class for the GetdataProvider provider.
@@ -73,9 +74,14 @@ export class GetdataProvider {
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
-  saveRestaurant(title:string,detail:string,condition:string,lat,lng,price,id){
+  saveRestaurant(title:string,detail:string,condition:string,lat:any,lng:any,price,id){
     return this.http.get(this.url+'api/user.php?Mode=saveRestaurant&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id)
     .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);    
+  }
+  getRestaurant():Observable<Restaurant[]>{
+    return this.http.get(this.url+'api/user.php?Mode=getRestaurant' )
+    .map((res:Response)=><Restaurant[]>  res.json() )
     .catch(this.handleError);    
   }
   saveProfile(email:string,phone:number,sex:string,user_id:string){
@@ -104,5 +110,27 @@ export class GetdataProvider {
      })    
   }
 
-  
+  getRest(){
+    return this.http.get(this.url+'api/user.php?Mode=getListRest')
+    .map(res => {
+      return res.json();
+     })    
   }
+
+  saveRest(title:string,detail:string,condition:string,lat:any,lng:any,price,id){
+    return this.http.get(this.url+'api/user.php?Mode=saveRest&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id)
+    .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);    
+  }
+  getProperty(){
+    return this.http.get(this.url+'api/user.php?Mode=getListProperty')
+    .map(res => {
+      return res.json();
+     })       
+  }
+  saveProperty(title:string,detail:string,condition:string,lat:any,lng:any,price,id,phone){
+    return this.http.get(this.url+'api/user.php?Mode=saveProperty&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id+'&phone='+phone)
+    .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);    
+  }
+}

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform ,AlertController, NavParams } from 'ionic-angular';
+import { Nav, Platform ,AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IntroPage } from '../pages/intro/intro';
@@ -19,6 +19,8 @@ import { GetdataProvider } from '../providers/getdata/getdata';
 import { GetpromotedPage } from '../pages/getpromoted/getpromoted';
 import { CommingsoonPage } from '../pages/commingsoon/commingsoon';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { RestPage } from '../pages/rest/rest';
+import { PropertyPage } from '../pages/property/property';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +28,7 @@ import { RestaurantPage } from '../pages/restaurant/restaurant';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = IntroPage;
+  rootPage: any;
   email:string;
   status:string;
   pages: Array<{title: string, component: any}>;
@@ -43,19 +45,18 @@ export class MyApp {
               public getdataPvder:GetdataProvider
             ) {
 
-              console.log('MYAPPPPPPPP     ')
-    this.splashScreen.hide();
-    this.initializeApp();
+
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Favorites', component: HomePage },
+      { title: 'Featured', component: HomePage },
       // { title: 'News', component: ListPage },
       { title: 'Free Gifts', component: FreegiftPage },
       { title: 'ร้านอาหาร', component: RestaurantPage },
-      { title: 'ที่พัก', component: CommingsoonPage },
-      { title: 'Shopping', component: CommingsoonPage },
+      { title: 'ที่พัก', component: RestPage },
+      // { title: 'Shopping', component: CommingsoonPage },
       { title: 'Playlists', component: YoutubePage },
+      // { title: 'Job & Properties', component: PropertyPage },
       // { title: 'Youtube', component: YoutubePage },
       // { title: 'เกี่ยวกับ', component: AboutusPage },
       { title: 'การตั้งค่า', component: SettingPage }
@@ -76,22 +77,21 @@ export class MyApp {
             }
           )
 
-          this.nav.setRoot(ListPage);
-
+          // this.nav.setRoot(HomePage);
+          this.rootPage = HomePage;
       storage.get('status').then((val)=>{
         if(val == 'admin'){
             this.status = val;
         }
       })
+        }else{
+          this.rootPage = IntroPage;
         }
       });
-      storage.get('Firsttime').then((val) => {   
-      if (val){
-        this.nav.setRoot(ListPage);
-      }
-    });
 
 
+    // this.splashScreen.hide();
+    this.initializeApp();
 
   }
 

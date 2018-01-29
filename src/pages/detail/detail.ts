@@ -10,7 +10,6 @@ export class DetailPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
     this.Data = navParams.get('Data');
-    console.log(this.Data)
   }
 
   ionViewDidLoad() {

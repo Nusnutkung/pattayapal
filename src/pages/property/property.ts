@@ -4,20 +4,21 @@ import { SettingrestaurantPage } from '../settingrestaurant/settingrestaurant';
 import { Storage } from '@ionic/storage/dist/storage';
 import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
-import { DetailPage } from '../detail/detail';
-import { RestaurantdetailPage } from '../restaurantdetail/restaurantdetail';
+import { SettingpropertyPage } from '../settingproperty/settingproperty';
+import { PropertydetailPage } from '../propertydetail/propertydetail';
 
 
 @Component({
-  selector: 'page-restaurant',
-  templateUrl: 'restaurant.html',
+  selector: 'page-property',
+  templateUrl: 'property.html',
 })
-export class RestaurantPage {
+export class PropertyPage {
+
+
   status:any;
   errorMessage:any;
   sub:Subscription;
   getdata:any;
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public getdataPvder:GetdataProvider) {
     storage.get('status').then( (res)=>{
@@ -27,22 +28,18 @@ export class RestaurantPage {
     })
   }
 
-  gotoSettingres(){ this.navCtrl.push(SettingrestaurantPage)}
   ionViewDidLoad() {
+    console.log('ionViewDidLoad RestPage');
     this.getData();
-    console.log('ionViewDidLoad RestaurantPage');
   }
+  gotoSettingproperty(){ this.navCtrl.push(SettingpropertyPage); }
+
   private getData() {
-    this.sub = this.getdataPvder.getRestaurant().subscribe(
+    this.sub = this.getdataPvder.getProperty().subscribe(
       (res) => this.getdata = res,
       (error) => {this.errorMessage = <any> error
     });
   }
 
-  gotoNews(c){
-    this.navCtrl.push(RestaurantdetailPage,{
-      Data : c
-    })
-
-  }
+  gotoPropertyDetail(c){ this.navCtrl.push(PropertydetailPage,{Data: c}) }
 }

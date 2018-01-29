@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+      <ion-buttons left>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+      </ion-buttons>
+      <ion-title>ที่พัก</ion-title>
+      <ion-buttons right *ngIf='status'>
+          <button right ion-button icon-only (click)="gotoSettingres()">
+              <ion-icon name="settings" ></ion-icon>
+          </button>
+      </ion-buttons>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+    
+      <div sticky style="top: 0;display: block;z-index: -1;background:#eee"  >
+          <img class='imgHomeNews' src="http://pattayapal.com/api/images/rest/{{data.id}}.jpg " style="width:100%;height:auto;">      
+
+    
+      <div style="padding:3px 5px 5px 10px;">
+        <p style="margin:0px;font-weight:600">{{data.title}}</p>
+      </div>
+    </div>
+      <div style="padding:3px 5px 5px 10px;">
+        <p style="margin:0px;">{{data.short_detail}}</p>
+      </div>
+      <div style="padding:3px 5px 5px 10px;">
+        <p style="margin:0px;">{{data.long_detail}}</p>
+      </div>
+
+      <div >
+        <div #map id="map" style="width:100%;height:200px;"></div>
+      </div>   
+    
+      <div style="margin-top: 50px;">
+          <img src="http://pattayapal.com/api/images/ads/หน้าที่พัก.png">
+      </div>
+
+    </ion-content>
+    

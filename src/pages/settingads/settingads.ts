@@ -8,7 +8,7 @@ import { UploadimageadsPage } from '../uploadimageads/uploadimageads';
   templateUrl: 'settingads.html',
 })
 export class SettingadsPage {
-  data= ['หน้าเมนู', 'หน้าข่าว' ];
+  data= ['หน้าเมนู', 'หน้าข่าว','หน้าอาหาร','หน้าที่พัก' ];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

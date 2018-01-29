@@ -6,8 +6,8 @@
     <ion-title>Pattaya Pal</ion-title>
   </ion-navbar>
   <ion-row class="toolbar toolbar-background-md ">
-        <ion-col col-6 class=" text-cen font-width font-white  {{featuredtab}}" id="feature" (click)='feature()'  >Featured</ion-col>
-        <ion-col col-6 class=" text-cen font-width font-white  {{nearmetab}}" id="nearme" (click)='nearme()'>Near Me</ion-col>
+        <ion-col col-6 class=" text-cen font-width font-white  active"  >Featured</ion-col>
+        <ion-col col-6 class=" text-cen font-width font-white  "  (click)='nearme()' >Near Me</ion-col>
     </ion-row>
 </ion-header>
 
@@ -16,7 +16,7 @@
 <!-- ////////////// -->
 <ion-row style="padding: 5px;">
     <ion-col style="font-size:20px;color:#ffad33;">
-        <img src="assets/menu/Favorites.png" style="width:35px;vertical-align: text-bottom;"> Super Deals
+        <img src="assets/menu/Featured.png" style="width:35px;vertical-align: text-bottom;"> Super Deals
     </ion-col>
     <ion-col style="text-align:right;font-size:15px;">
         ดูทั้งหมด
@@ -24,11 +24,11 @@
 </ion-row>
 
 <ion-row >
-    <ion-col>
+    <ion-col style="padding:0px;">
       <ion-slides  *ngIf="Ads && Ads.length" loop="true"  >
           <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of getdata" (click)="gotoNews(a)"  >
                 <ion-row><img class='imgHomeNews' [src]="(a.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+a.meta_value : 'assets/home/slider/1.jpg'" style="width:100%;height:100%;"></ion-row>
-                <ion-row style="bottom:0;position:fixed;background:white;width:100%;"><ion-card-title > {{ a.post_title }}</ion-card-title ></ion-row>
+                <ion-row style="bottom:0;position:fixed;background:white;width:100%;"><ion-card-title style="padding:5px;"> {{ a.post_title }}</ion-card-title ></ion-row>
           
         </ion-slide>
       </ion-slides> 
@@ -37,49 +37,49 @@
 <!-- ////////////// -->
 
 <!-- ////////////// -->
-<ion-row style="padding: 5px;">
+<!-- <ion-row style="padding: 5px;">
     <ion-col style="font-size:20px;color:#ffad33;">
-        <img src="assets/menu/Favorites.png" style="width:35px;vertical-align: text-bottom;"> แนะนำ
+        <img src="assets/menu/Featured.png" style="width:35px;vertical-align: text-bottom;"> แนะนำ
     </ion-col>
     <ion-col style="text-align:right;font-size:15px;">
         ดูทั้งหมด
     </ion-col>
 </ion-row>
 <ion-row>
-  <ion-col>
-      <ion-slides  *ngIf="Ads && Ads.length" loop="true" effect="slide"  paper="true"   >
-          <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of Ads" (click)="gotoNews(a)" >
+  <ion-col style="padding:0px;">
+      <ion-slides  *ngIf="PropertyList && PropertyList.length" loop="true" effect="slide"  paper="true"   style="height:200px;" >
+          <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of PropertyList" (click)="gotoproperty(a)" >
 
-        <ion-row><img class='imgHomeNews' [src]="(a.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+a.meta_value : 'assets/home/slider/1.jpg'" style="width:100%;height:100%;">
+        <ion-row><img class='imgHomeNews' [src]="'http://pattayapal.com/api/images/property/'+a.id+'.jpg'" style="width:100%;height:100%;">
         </ion-row>    
           <ion-row style="bottom:0;position:fixed;background:white;width:100%;"> 
-            <ion-card-title > {{ a.post_title }}</ion-card-title >
+            <ion-card-title style="padding:5px;"> {{ a.title }}</ion-card-title >
             </ion-row>
         </ion-slide>
       </ion-slides> 
     </ion-col>
-</ion-row>
+</ion-row> -->
 <!-- ////////////// -->
 
 
 <!-- ////////////// -->
 <ion-row style="padding: 5px;">
     <ion-col style="font-size:20px;color:#ffad33;">
-        <img src="assets/menu/Favorites.png" style="width:35px;vertical-align: text-bottom;"> อาหาร
+        <img src="assets/menu/Featured.png" style="width:35px;vertical-align: text-bottom;"> อาหาร
     </ion-col>
     <ion-col style="text-align:right;font-size:15px;">
         ดูทั้งหมด
     </ion-col>
 </ion-row>
 <ion-row>
-    <ion-col>
-      <ion-slides  *ngIf="Ads && Ads.length" loop="true" effect="slide"  paper="true" >
-          <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of Ads" (click)="gotoNews(a)"  >
+    <ion-col style="padding:0px;">
+      <ion-slides  *ngIf="restaurantList && restaurantList.length" loop="true" effect="slide"  paper="true" style="height:200px;">
+          <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of restaurantList" (click)="gotores(a)"  >
           
-          <ion-row>  <img class='imgHomeNews' [src]="(a.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+a.meta_value : 'assets/home/slider/1.jpg'" style="width:100%;height:100%;">
+          <ion-row>  <img class='imgHomeNews' [src]="'http://pattayapal.com/api/images/restaurant/'+a.id+'.jpg'" style="width:100%;height:100%;">
           </ion-row>
           <ion-row style="bottom:0;position:fixed;background:white;width:100%;"> 
-          <ion-card-title > {{ a.post_title }}</ion-card-title >
+          <ion-card-title style="padding:5px;"> {{ a.title }}</ion-card-title >
           </ion-row>
         </ion-slide>
         </ion-slides> 
@@ -90,21 +90,21 @@
 <!-- ////////////// -->
 <ion-row style="padding: 5px;">
         <ion-col style="font-size:20px;color:#ffad33;">
-            <img src="assets/menu/Favorites.png" style="width:35px;vertical-align: text-bottom;"> ท่องเที่ยว
+            <img src="assets/menu/Featured.png" style="width:35px;vertical-align: text-bottom;"> ท่องเที่ยว
         </ion-col>
         <ion-col style="text-align:right;font-size:15px;">
             ดูทั้งหมด
         </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col>
-          <ion-slides  *ngIf="Ads && Ads.length" loop="true" effect="slide"  paper="true" >
-              <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of Ads" (click)="gotoNews(a)"  >
+        <ion-col style="padding:0px;">
+          <ion-slides  *ngIf="restList && restList.length" loop="true" effect="slide"  paper="true" style="height:200px;">
+              <ion-slide class='ImageAd' style="width:100%" *ngFor="let a of restList" (click)="gotorest(a)"  >
               
-              <ion-row>  <img class='imgHomeNews' [src]="(a.meta_value) ?  'http://pattayapal.com/wp-content/uploads/'+a.meta_value : 'assets/home/slider/1.jpg'" style="width:100%;height:100%;">
+              <ion-row>  <img class='imgHomeNews' [src]="'http://pattayapal.com/api/images/rest/'+a.id+'.jpg'" style="width:100%;height:100%;">
               </ion-row>
               <ion-row style="bottom:0;position:fixed;background:white;width:100%;"> 
-              <ion-card-title > {{ a.post_title }}</ion-card-title >
+              <ion-card-title style="padding:5px;"> {{ a.title }}</ion-card-title >
               </ion-row>
             </ion-slide>
             </ion-slides> 
@@ -114,33 +114,16 @@
 
 
     <ion-row>
-       <ion-col><img src="http://pattayapal.com/api/images/icon/home_bottom.jpg" style="height:100px;"></ion-col>
-       <ion-col><img src="http://pattayapal.com/api/images/icon/home_bottom.jpg" style="height:100px;"></ion-col>
+       <ion-col><img src="assets/home/3.jpg" style="height:100px;width:100%;" (click)='freegift()'></ion-col>
+       <ion-col><img src="assets/home/1.jpg" style="height:100px;width:100%;" (click)='restaurent()'></ion-col>
     </ion-row>
     <ion-row>
-        <ion-col><img src="http://pattayapal.com/api/images/icon/home_bottom.jpg" style="height:100px;"></ion-col>
-        <ion-col><img src="http://pattayapal.com/api/images/icon/home_bottom.jpg" style="height:100px;"></ion-col>
+        <ion-col><img src="assets/home/2.jpg" style="height:100px;width:100%;" (click)='rest()'></ion-col>
+        <ion-col><img src="assets/home/4.jpg" style="height:100px;width:100%;"></ion-col>
     </ion-row>
 
 
-
 </div>
-<div class=' {{hiddennearme}} ' >
 
-        <div #map id="map" style="height: 100%;width:100%;"></div>
-
-    <ion-footer >
-        <ion-toolbar class="text-cen font-white" style="font-size: 20px;">
-
-                <ion-col col-2><i class="fa fa-location-arrow" aria-hidden="true"></i></ion-col>
-                <ion-col col-2><i class="fa fa-filter" aria-hidden="true"></i></ion-col>
-                <ion-col col-4><input type="text"></ion-col>
-                <ion-col col-2><i class="fa fa-list" aria-hidden="true"></i></ion-col>
-                <ion-col col-2><i class="fa fa-map-marker" aria-hidden="true"></i></ion-col>
- 
-        </ion-toolbar>
-    </ion-footer>
-
-</div>
 </ion-content> 
 

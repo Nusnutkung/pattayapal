@@ -1,0 +1,33 @@
+
+<ion-header>
+  <ion-navbar>
+      <ion-buttons left>
+          <button ion-button menuToggle>
+              <ion-icon name="menu"></ion-icon>
+            </button>
+      </ion-buttons>
+      <ion-title>ที่พัก</ion-title>
+      <ion-buttons right *ngIf='status'>
+          <button right ion-button icon-only (click)="gotoSettingrest()">
+              <ion-icon name="add" ></ion-icon>
+          </button>
+      </ion-buttons>
+</ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <ion-card style="" *ngFor="let c of getdata" (click)='gotoRestDetail(c)'>
+      <div class='' >
+        <img [src]="'http://pattayapal.com/api/images/rest/'+c.id+'.jpg' " style="max-width:100%;" class="pictureNews imgHomeNews">
+      </div>
+      <ion-row style="font-size: 20px;padding: 5px;font-weight: 500;">
+          {{c.title}}
+      </ion-row>
+      <ion-row style="padding: 5px;">
+          {{c.short_detail}}
+      </ion-row>
+    </ion-card>
+
+</ion-content>

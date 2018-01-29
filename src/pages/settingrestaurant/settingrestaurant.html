@@ -13,12 +13,12 @@
   </ion-header>
   
   
-  <ion-content padding>
+  <ion-content>
   
 
       <ion-list >
           <ion-item>
-            <img src="http://www.pattayapal.com/api/images/{{ImageUrl}}" *ngIf='hideImage' style="width:100%;height:auto;">
+            <img src="{{ImageUrl}}" *ngIf='hideImage' style="width:100%;height:auto;">
             <img src="http://www.pattayapal.com/api/images/introduction/1.jpg" *ngIf="showImage" (click)='actionSheet()' style="width:100%;height:auto;">
           </ion-item>
           <ion-item>
@@ -44,7 +44,7 @@
           <ion-item>
               <ion-label color="primary" style="font-size:20px" stacked>แผนที่</ion-label>
           </ion-item>   
-          <div id="map" style="width:100%;height:400px;"></div>
+          <div #map id="map" style="width:100%;height:400px;"></div>
     </ion-list>
   
     <div style="text-align:center;">

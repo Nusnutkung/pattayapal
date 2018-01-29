@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, NavParams } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AboutusPage } from '../pages/aboutus/aboutus';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -35,6 +35,13 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { SettingrestaurantPage } from '../pages/settingrestaurant/settingrestaurant';
+import { RestaurantdetailPage } from '../pages/restaurantdetail/restaurantdetail';
+import { RestPage } from '../pages/rest/rest';
+import { SettingrestPage } from '../pages/settingrest/settingrest';
+import { RestdetailPage } from '../pages/restdetail/restdetail';
+import { PropertyPage } from '../pages/property/property';
+import { SettingpropertyPage } from '../pages/settingproperty/settingproperty';
+import { PropertydetailPage } from '../pages/propertydetail/propertydetail';
 
 @NgModule({
   declarations: [
@@ -58,7 +65,14 @@ import { SettingrestaurantPage } from '../pages/settingrestaurant/settingrestaur
     NearmePage,
     CommingsoonPage,
     RestaurantPage,
-    SettingrestaurantPage
+    SettingrestaurantPage,
+    RestaurantdetailPage,
+    RestPage,
+    SettingrestPage,
+    RestdetailPage,
+    PropertyPage,
+    SettingpropertyPage,
+    PropertydetailPage
   ],
   imports: [
     BrowserModule,
@@ -89,7 +103,14 @@ import { SettingrestaurantPage } from '../pages/settingrestaurant/settingrestaur
     NearmePage,
     CommingsoonPage,
     RestaurantPage,
-    SettingrestaurantPage
+    SettingrestaurantPage,
+    RestaurantdetailPage,
+    RestPage,
+    SettingrestPage,
+    RestdetailPage,
+    PropertyPage,
+    SettingpropertyPage,
+    PropertydetailPage
   ],
   providers: [
     StatusBar,
