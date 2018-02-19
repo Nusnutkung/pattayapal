@@ -19,6 +19,7 @@ import {
   Marker
  } from '@ionic-native/google-maps';
 import { MyApp } from '../../app/app.component';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
  declare var google:any;
 @Component({
   selector: 'page-settingrest',
@@ -43,6 +44,7 @@ export class SettingrestPage {
   defaultLat = 12.916984;
   defaultLng = 100.896238;
   data:any;
+  user:any;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private camera: Camera, 
@@ -55,7 +57,8 @@ export class SettingrestPage {
               private filePath: FilePath,
               private platform: Platform,
               private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController
+              private loadingCtrl: LoadingController,
+              private auth:AuthServiceProvider
             ) {
               if(this.navParams.get('Data')){
                 this.data = this.navParams.get('Data');
@@ -69,9 +72,10 @@ export class SettingrestPage {
                 this.title = this.data['title'];
                 this.detail = this.data['long_detail'];
                 this.condition = this.data['short_detail'];
-                console.log('log ' +JSON.stringify(this.data));
 
               }
+              this.user = this.auth.getUserInfo();
+
             }
 
   ionViewDidLoad() {
@@ -80,9 +84,14 @@ export class SettingrestPage {
   }
 
   saveRest() {
-
-    console.log('saveRestaurant '+ this.lat+' :: '+this.lng)
-    this.sub = this.getdataPvder.saveRest(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id).subscribe(
+    if(this.pro_id==''){
+      let alert = this.alertCtrl.create({
+        message: 'กรุณาใส่รูปภาพ',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+    this.sub = this.getdataPvder.saveRest(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id,this.user['email']).subscribe(
       (res) => {
         let alert = this.alertCtrl.create({
           message: 'บันทึกข้อมูลเรียบร้อย',
@@ -162,7 +171,6 @@ export class SettingrestPage {
   }
 
 uploadImage(){
-  console.log('uploadImage')
   let options = {
     mimeType: "multipart/form-data",
     params :{
@@ -178,7 +186,6 @@ uploadImage(){
   cutStr = cutStr[1].split('"]');
   this.pro_id = cutStr[0];
   }).catch((err)=>{
-    console.log('err' + err)
     this.showImage = true;
     this.hideImage = false;
   })

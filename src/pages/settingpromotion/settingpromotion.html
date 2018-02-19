@@ -35,7 +35,11 @@
             <ion-label color="primary" style="font-size:20px" stacked>เงื่อนไข</ion-label>
             <ion-textarea   rows="8" cols="10"  [(ngModel)]='condition'></ion-textarea>
         </ion-item>   
-          
+        <ion-item>
+          <ion-label color="primary" style="font-size:20px" stacked>วันหมดโปรโมชั่น</ion-label>
+          <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]="dateend"></ion-datetime>
+        </ion-item>
+
         <!-- <img [src]="_external.loadImage(profile.shop_image_1)" > -->
   </ion-list>
 

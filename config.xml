@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.pattayapal" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.pattayapal" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Pattaya Pal</name>
     <description>Pattaya Pal</description>
     <author email="nusnutkungdev@gmail.com" href="http://pattayapal.com/">Pattaya Pal</author>
@@ -94,4 +94,9 @@
         <variable name="LOCATION_ALWAYS_USAGE_DESCRIPTION" value="Trace your location on the map" />
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="151913938709720" />
+        <variable name="APP_NAME" value="pattayapal" />
+    </plugin>
+    <plugin name="cordova-plugin-qrscanner" spec="^2.5.0" />
 </widget>

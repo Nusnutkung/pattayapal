@@ -14,13 +14,13 @@
     <div style="text-align:center;margin-top: 20px;margin-left:5%;margin-right:5%;" class="front">
         <ion-item >
           <ion-label fixed>Username</ion-label>
-          <ion-input type="text" [(ngModel)]='email' ></ion-input>
+          <ion-input type="text" [(ngModel)]='registerCredentials.email' ></ion-input>
         </ion-item>
       </div>  
       <div style="text-align:center;margin-top: 20px;margin-left:5%;margin-right:5%;" class="front">
         <ion-item>
           <ion-label fixed>Password</ion-label>
-          <ion-input type="password" [(ngModel)]='pass'></ion-input>
+          <ion-input type="password" [(ngModel)]='registerCredentials.password'></ion-input>
         </ion-item>
         </div>
   </ion-list>
@@ -34,7 +34,7 @@
       <span  (click)='login()'> ลืมรหัสผ่าน </span>
     </ion-list>
 
-  <ion-list style="text-align:center;" class="front">
+  <ion-list style="text-align:center;" class="front" (click)="loginfb()">
       <img src="assets/slider/facebook.png"   style="width:80%;" >
     </ion-list>
 

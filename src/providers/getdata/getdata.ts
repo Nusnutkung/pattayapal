@@ -74,8 +74,8 @@ export class GetdataProvider {
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
-  saveRestaurant(title:string,detail:string,condition:string,lat:any,lng:any,price,id){
-    return this.http.get(this.url+'api/user.php?Mode=saveRestaurant&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id)
+  saveRestaurant(title:string,detail:string,condition:string,lat:any,lng:any,price,id,owner=''){
+    return this.http.get(this.url+'api/user.php?Mode=saveRestaurant&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id+'&owner='+owner)
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
@@ -117,8 +117,8 @@ export class GetdataProvider {
      })    
   }
 
-  saveRest(title:string,detail:string,condition:string,lat:any,lng:any,price,id){
-    return this.http.get(this.url+'api/user.php?Mode=saveRest&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id)
+  saveRest(title:string,detail:string,condition:string,lat:any,lng:any,price='',id='',phone='',owner=''){
+    return this.http.get(this.url+'api/user.php?Mode=saveRest&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id+'&owner='+owner)
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
@@ -128,9 +128,18 @@ export class GetdataProvider {
       return res.json();
      })       
   }
-  saveProperty(title:string,detail:string,condition:string,lat:any,lng:any,price,id,phone){
-    return this.http.get(this.url+'api/user.php?Mode=saveProperty&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id+'&phone='+phone)
+  saveProperty(title:string,detail:string,condition:string,lat:any,lng:any,price='',id='',phone='',owner=''){
+    return this.http.get(this.url+'api/user.php?Mode=saveProperty&title='+title+'&short_detail='+detail+'&long_detail='+condition+'&lat='+lat+'&lng='+lng+'&price='+price+'&id='+id+'&phone='+phone+'&owner='+owner)
     .map((res:Response)=> ( res.json()) )
     .catch(this.handleError);    
   }
+
+  getListMyShop(owner=''){
+    return this.http.get(this.url+'api/user.php?Mode=GetListMyShop&owner='+owner )
+    .map((res:Response)=> ( res.json()) )
+    .catch(this.handleError);     
+  }
+
+
+
 }

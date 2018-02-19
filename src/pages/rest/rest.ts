@@ -6,6 +6,7 @@ import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
 import { SettingrestPage } from '../settingrest/settingrest';
 import { RestdetailPage } from '../restdetail/restdetail';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 @Component({
   selector: 'page-rest',
@@ -17,13 +18,12 @@ export class RestPage {
   errorMessage:any;
   sub:Subscription;
   getdata:any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public getdataPvder:GetdataProvider) {
-    storage.get('status').then( (res)=>{
-      if(res != null){
-        this.status = res;
-      }
-    })
+  user:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public getdataPvder:GetdataProvider, public auth:AuthServiceProvider) {
+    this.user = this.auth.getUserInfo();
+    if(this.user != null){
+      this.status = this.user['status'];
+    }
   }
 
   ionViewDidLoad() {

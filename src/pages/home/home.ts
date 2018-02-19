@@ -13,7 +13,7 @@ import { RestPage } from '../rest/rest';
 import { RestdetailPage } from '../restdetail/restdetail';
 import { PropertydetailPage } from '../propertydetail/propertydetail';
 import { PropertyPage } from '../property/property';
-
+import { AuthServiceProvider, User } from '../../providers/auth-service/auth-service';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -29,9 +29,16 @@ export class HomePage {
   errorMessage:string;
   restList:any;
   PropertyList:any;
+  username='';
+  email='';
   constructor(public navCtrl: NavController,
-              public getdataPvder: GetdataProvider
+              public getdataPvder: GetdataProvider,
+              public auth:AuthServiceProvider
+
   ) {
+    // let info = this.auth.getUserInfo();
+    // this.username = info['name'];
+    // this.email = info['email'];
 
 
     this.sub = this.getdataPvder.GetListNews('Ads',5).subscribe(

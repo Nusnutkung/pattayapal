@@ -42,7 +42,10 @@ import { RestdetailPage } from '../pages/restdetail/restdetail';
 import { PropertyPage } from '../pages/property/property';
 import { SettingpropertyPage } from '../pages/settingproperty/settingproperty';
 import { PropertydetailPage } from '../pages/propertydetail/propertydetail';
-
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { MyshopPage } from '../pages/myshop/myshop';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 @NgModule({
   declarations: [
     MyApp,
@@ -72,7 +75,8 @@ import { PropertydetailPage } from '../pages/propertydetail/propertydetail';
     RestdetailPage,
     PropertyPage,
     SettingpropertyPage,
-    PropertydetailPage
+    PropertydetailPage,
+    MyshopPage
   ],
   imports: [
     BrowserModule,
@@ -110,7 +114,8 @@ import { PropertydetailPage } from '../pages/propertydetail/propertydetail';
     RestdetailPage,
     PropertyPage,
     SettingpropertyPage,
-    PropertydetailPage
+    PropertydetailPage,
+    MyshopPage
   ],
   providers: [
     StatusBar,
@@ -123,13 +128,12 @@ import { PropertydetailPage } from '../pages/propertydetail/propertydetail';
     File,
     YoutubeVideoPlayer,
     GoogleMaps,
-    Geolocation
+    Geolocation,
+    AuthServiceProvider,
+    Facebook,
+    QRScanner
     
   ]
 })
 export class AppModule {
-
-  nut(){
-    
-  }
 }

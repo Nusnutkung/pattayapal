@@ -9,6 +9,7 @@ import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { Platform } from 'ionic-angular/platform/platform';
 import { Geolocation } from '@ionic-native/geolocation';
+
 import {
   GoogleMaps,
   GoogleMap,
@@ -18,6 +19,7 @@ import {
   MarkerOptions,
   Marker
  } from '@ionic-native/google-maps';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
  declare var google:any;
 @Component({
   selector: 'page-settingrestaurant',
@@ -42,6 +44,7 @@ export class SettingrestaurantPage {
   defaultLat = 12.916984;
   defaultLng = 100.896238;
   data:any;
+  user:any;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private camera: Camera, 
@@ -54,7 +57,8 @@ export class SettingrestaurantPage {
               private filePath: FilePath,
               private platform: Platform,
               private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController
+              private loadingCtrl: LoadingController,
+              private auth:AuthServiceProvider
             ) {
               if(this.navParams.get('Data')){
                 this.data = this.navParams.get('Data');
@@ -68,9 +72,10 @@ export class SettingrestaurantPage {
                 this.title = this.data['title'];
                 this.detail = this.data['long_detail'];
                 this.condition = this.data['short_detail'];
-                console.log('log ' +JSON.stringify(this.data));
 
               }
+              this.user = this.auth.getUserInfo();
+              console.log('user ' + JSON.stringify(this.user));
             }
 
   ionViewDidLoad() {
@@ -79,9 +84,14 @@ export class SettingrestaurantPage {
   }
 
   saveRestaurant() {
-
-    console.log('saveRestaurant '+ this.lat+' :: '+this.lng)
-    this.sub = this.getdataPvder.saveRestaurant(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id).subscribe(
+    if(this.pro_id==''){
+      let alert = this.alertCtrl.create({
+        message: 'กรุณาใส่รูปภาพ',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+    this.sub = this.getdataPvder.saveRestaurant(this.title,this.detail,this.condition,this.lat,this.lng,this.price,this.pro_id,this.user['email']).subscribe(
       (res) => {
         let alert = this.alertCtrl.create({
           message: 'บันทึกข้อมูลเรียบร้อย',

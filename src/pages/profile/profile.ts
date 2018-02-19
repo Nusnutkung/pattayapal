@@ -9,6 +9,7 @@ import { Transfer , TransferObject } from '@ionic-native/transfer';
 import { File } from '@ionic-native/file';
 import { FilePath } from '@ionic-native/file-path';
 import { MyApp } from '../../app/app.component';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class ProfilePage {
   sex:any;
   user_id:any;
   ImageData:any;
+  user:any;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public storage:Storage,
@@ -39,27 +41,19 @@ export class ProfilePage {
               private filePath: FilePath,
               private platform: Platform,
               private toastCtrl: ToastController,
-              private loadingCtrl: LoadingController
-
-
-
+              private loadingCtrl: LoadingController,
+              private auth:AuthServiceProvider
             ) {
 
-              storage.get('Email').then((val) => {    
-                this.email = val;
-              this.sub = this.getdataPvder.getUser(val).subscribe(
-                (res) =>{
-                  this.email= res['email'];
-                  this.phone = res['phone'];
-                  this.sex = res['sex'];
-                  this.user_id = res['user_id'];
-                  this.image = 'http://www.pattayapal.com/api/images/users/'+res["user_id"]+'.jpg';
-
-                }
-              )
-            })
-
+            this.user =  this.auth.getUserInfo();
+            if(this.user){
+              this.email= this.user['email'];
+              this.phone = this.user['phone'];
+              this.sex = this.user['sex'];
+              this.user_id = this.user['user_id'];
+              this.image = this.user['image'];
             }
+          }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');

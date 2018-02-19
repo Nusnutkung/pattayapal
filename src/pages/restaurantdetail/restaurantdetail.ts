@@ -20,6 +20,7 @@ import {
  } from '@ionic-native/google-maps';
 import { SettingrestaurantPage } from '../settingrestaurant/settingrestaurant';
 import { Storage } from '@ionic/storage';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
  declare var google:any;
 
 @Component({
@@ -30,6 +31,7 @@ export class RestaurantdetailPage {
   @ViewChild('map') mapRef: ElementRef;
   data:any;
   status:any;
+  user:any
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private camera: Camera, 
@@ -43,14 +45,15 @@ export class RestaurantdetailPage {
               private platform: Platform,
               private toastCtrl: ToastController,
               private loadingCtrl: LoadingController,
-              private storage:Storage
+              private storage:Storage,
+              private auth:AuthServiceProvider
             ){
         this.data = navParams.get('Data');
-        storage.get('status').then( (res)=>{
-          if(res != null){
-            this.status = res;
-          }
-        })
+        this.user = this.auth.getUserInfo()
+        
+        if(this.data['owner'] == this.user['email'] ){
+          this.status = true;
+        }
 
   }
 

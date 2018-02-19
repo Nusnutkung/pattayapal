@@ -6,6 +6,7 @@ import { GetdataProvider } from '../../providers/getdata/getdata';
 import { Subscription } from 'rxjs/Subscription';
 import { DetailPage } from '../detail/detail';
 import { RestaurantdetailPage } from '../restaurantdetail/restaurantdetail';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
 @Component({
@@ -17,14 +18,15 @@ export class RestaurantPage {
   errorMessage:any;
   sub:Subscription;
   getdata:any;
+  user:any;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public getdataPvder:GetdataProvider) {
-    storage.get('status').then( (res)=>{
-      if(res != null){
-        this.status = res;
-      }
-    })
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage:Storage, public getdataPvder:GetdataProvider, public auth:AuthServiceProvider) {
+
+    this.user = this.auth.getUserInfo();
+    if(this.user != null){
+      this.status = this.user['status'];
+    }
   }
 
   gotoSettingres(){ this.navCtrl.push(SettingrestaurantPage)}

@@ -9,12 +9,14 @@
 
     <ion-toolbar style="height:200px;" *ngIf="email" style="padding:0px;">
       <ion-row  >
-        <ion-col col-4 style="text-align:center"><img [src]="image" style="width:auto;max-height:70px; border-radius:100%; background-position:center center;"></ion-col>
-        <ion-col col-8 style="padding-top: 20px;" class="font-white" >Email:  {{email}}</ion-col>
+        <ion-col col-4 style="text-align:center"><img [src]="image" style="width:auto;max-height:70px;background-position:center center;"></ion-col>
+        <ion-col col-8 style="padding-top: 20px;" class="font-white" >  {{email}}</ion-col>
       </ion-row>
       <ion-row>
-          <ion-col style="padding-left: 18px; " ><img src="assets/menu/bag.png" style="height:30px;" ></ion-col>
-          <ion-col style="text-align:right;padding-right: 20px;"><img src="assets/menu/qrcode.png" style="height:30px;"> </ion-col>
+          <ion-col  ><img src="assets/menu/bag.png"  style="height:40px;"></ion-col>
+          <ion-col menuClose><img src="assets/menu/shop.png" (click)="gotoMyshop()" style="height:40px;" ></ion-col>
+          <ion-col ><img src="assets/menu/qrcode.png" (click)="scanQRCode()" style="height:40px;"> </ion-col>
+          <ion-col ></ion-col>
         </ion-row>    
 
     </ion-toolbar>
@@ -27,7 +29,7 @@
   <ion-content>
       <ion-list *ngIf="email">
       <div (click)='gotoProfile()' menuClose> 
-          <button menuClose ion-item (click)="gotopromoted()" >ดูข้อมูลส่วนตัว</button>
+          <button menuClose ion-item (click)="gotoProfile()" >ดูข้อมูลส่วนตัว</button>
       </div>
       </ion-list>
   <div *ngIf='status'>
@@ -54,9 +56,9 @@
 <!-- //test -->
 
 
-    <div >
+    <!-- <div >
         <img src="http://pattayapal.com/api/images/ads/หน้าเมนู.png">
-    </div>
+    </div> -->
 
   </ion-content>
 
